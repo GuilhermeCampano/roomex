@@ -11,6 +11,7 @@ import { SendValidFormAction } from '@root/app/state/actions';
   styleUrls: ['./register-container.component.scss']
 })
 export class RegisterContainerComponent implements OnInit {
+  // @TODO: move the form to a presentational component
   public registerForm: FormGroup;
 
   constructor(
@@ -34,6 +35,8 @@ export class RegisterContainerComponent implements OnInit {
 
   public onSubmit() {
     console.log(this.registerForm.value);
+    // @TODO: create an effect to redirect to /thankyou
     this.store.dispatch(new SendValidFormAction(this.registerForm.value));
+    
   }
 }

@@ -2,6 +2,7 @@ import { Action } from '@ngrx/store';
 
 import { FormActionsActionTypes, FormActions } from '@state/actions';
 
+// @TODO: add a model similar?
 export interface FormState {
   title: string;
   firstName: string;
