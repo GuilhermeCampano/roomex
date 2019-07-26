@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+
+import { State, FormState } from '@state/reducers';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-thank-you-container',
@@ -7,9 +11,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ThankYouContainerComponent implements OnInit {
 
-  constructor() { }
+  public formState$: Observable<FormState>;
+  constructor(private store: Store<State>) {}
 
-  ngOnInit() {
+  public ngOnInit(): void {
+    this.formState$ = this.store.select('formState');
   }
 
 }

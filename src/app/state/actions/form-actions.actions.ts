@@ -1,11 +1,15 @@
 import { Action } from '@ngrx/store';
 
+import { FormState } from '@state/reducers';
+
 export enum FormActionsActionTypes {
-  InitForm = '[Form] Initiliaze form',
+  SEND_VALID_FORM = '[Form] Send valid form',
 }
 
-export class InitFormAction implements Action {
-  public readonly type = FormActionsActionTypes.InitForm;
+export class SendValidFormAction implements Action {
+  public readonly type = FormActionsActionTypes.SEND_VALID_FORM;
+
+  constructor(public payload: FormState) {}
 }
 
-export type FormActions = InitFormAction;
+export type FormActions = SendValidFormAction;

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { EnterRoutingModule } from './enter-routing.module';
 import { RegisterContainerComponent } from './components';
@@ -8,7 +9,8 @@ import { RegisterContainerComponent } from './components';
   declarations: [RegisterContainerComponent],
   imports: [
     CommonModule,
-    EnterRoutingModule
+    EnterRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class EnterModule { }

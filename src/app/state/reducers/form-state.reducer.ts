@@ -1,21 +1,33 @@
 import { Action } from '@ngrx/store';
 
-import { FormActionsActionTypes } from '@state/actions';
+import { FormActionsActionTypes, FormActions } from '@state/actions';
 
 export interface FormState {
-  value: string;
+  title: string;
+  firstName: string;
+  lastName: string;
+  username: string;
+  movie: string;
+  country: string;
+  postCode: string;
 }
 
 export const initialFormState: FormState = {
-  value: ''
+  title: undefined,
+  firstName: undefined,
+  lastName: undefined,
+  username: undefined,
+  movie: undefined,
+  country: undefined,
+  postCode: undefined,
 };
 
-export function formReducer(state = initialFormState, action: Action): FormState {
+export function formReducer(state = initialFormState, action: FormActions): FormState {
   switch (action.type) {
-    case FormActionsActionTypes.InitForm:
+    case FormActionsActionTypes.SEND_VALID_FORM:
       return {
         ...state,
-        value: 'init'
+        ...action.payload
       };
     default:
       return state;
