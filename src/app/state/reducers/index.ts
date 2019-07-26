@@ -5,7 +5,8 @@ import {
   createSelector,
   MetaReducer
 } from '@ngrx/store';
-import { environment } from '../../../environments/environment';
+
+import { environment } from '@root/environments/environment';
 import { FormState, formReducer } from './form-state.reducer';
 
 export interface State {

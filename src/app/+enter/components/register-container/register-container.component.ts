@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+
+import { State } from '@state/reducers';
+import { InitFormAction } from '@state/actions';
 
 @Component({
   selector: 'app-register-container',
@@ -7,9 +11,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterContainerComponent implements OnInit {
 
-  constructor() { }
+  constructor(private store: Store<State>) { }
 
-  ngOnInit() {
+  public ngOnInit(): void {
+    this.store.dispatch(new InitFormAction());
   }
-
 }

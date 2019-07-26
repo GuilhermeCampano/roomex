@@ -6,9 +6,9 @@ import { EffectsModule } from '@ngrx/effects';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { reducers, metaReducers } from './state/reducers';
-import { AppEffects } from './state/effects';
-import { environment } from '../environments/environment';
+import { reducers, metaReducers } from '@state/reducers';
+import { AppEffects } from '@state/effects';
+import { environment } from '@root/environments/environment';
 
 @NgModule({
   declarations: [
