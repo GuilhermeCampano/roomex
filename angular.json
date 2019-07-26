@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "roomex"
+    }
+  },
+  "defaultProject": "roomex",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
