@@ -6,11 +6,14 @@ import {
   MetaReducer
 } from '@ngrx/store';
 import { environment } from '../../../environments/environment';
+import { FormState, formReducer } from './form-state.reducer';
 
 export interface State {
+  formState: FormState;
 }
 
 export const reducers: ActionReducerMap<State> = {
+  formState: formReducer
 };
 
 
