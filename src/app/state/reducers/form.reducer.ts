@@ -1,17 +1,9 @@
 import { Action, createReducer, on } from '@ngrx/store';
 
 import { sendValidFormAction } from '@state/actions';
+import { RegisterForm } from '@app/models';
 
-// @TODO: add a model similar?
-export interface FormState {
-  title: string;
-  firstName: string;
-  lastName: string;
-  username: string;
-  movie: string;
-  country: string;
-  postCode: string;
-}
+export type FormState = RegisterForm;
 
 export const initialFormState: FormState = {
   title: undefined,
@@ -31,6 +23,6 @@ const reducer = createReducer(
   }))
 );
 
-export function formReducer( state: FormState | undefined, action: Action) {
+export function formReducer(state: FormState | undefined, action: Action) {
   return reducer(state, action);
 }

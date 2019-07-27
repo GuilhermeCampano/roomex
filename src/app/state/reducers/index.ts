@@ -8,16 +8,20 @@ import {
 
 import { environment } from '@root/environments/environment';
 import { FormState, formReducer } from './form.reducer';
+import { MovieState, movieReducer } from './movie.reducer';
 
 export interface AppState {
-  formState: FormState;
+  form: FormState;
+  movies: MovieState;
 }
 
 export const reducers: ActionReducerMap<AppState> = {
-  formState: formReducer
+  form: formReducer,
+  movies: movieReducer
 };
 
 export const metaReducers: MetaReducer<AppState>[] = !environment.production ? [] : [];
 
 export * from './form.reducer';
+export * from './movie.reducer';
 
