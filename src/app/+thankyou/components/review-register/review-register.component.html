@@ -1,9 +1,26 @@
 <h3>Thank you!!!</h3>
 
-<div>title: {{register.title}}</div>
-<div>firstName: {{register.firstName}}</div>
-<div>lastName: {{register.lastName}}</div>
-<div>username: {{register.username}}</div>
-<div>movie: {{register.movie}}</div>
-<div>country: {{register.country}}</div>
-<div>postCode: {{register.postCode}}</div>
+<div class="review-register__item">
+  <span class="review-register__item-title">Name:</span>
+  {{register.title}} {{register.firstName}} {{register.lastName}}
+</div>
+
+<div class="review-register__item">
+  <span class="review-register__item-title">Username:</span>
+  {{register.username}}
+</div>
+
+<div class="review-register__item">
+  <span class="review-register__item-title">Favourite Movie:</span>
+  {{register.movie}}
+</div>
+
+<div class="review-register__item">
+  <span class="review-register__item-title">Country:</span>
+  {{register.country}}
+</div>
+
+<div class="review-register__item">
+  <span class="review-register__item-title">Post Code:</span>
+  {{register.postCode}}
+</div>
