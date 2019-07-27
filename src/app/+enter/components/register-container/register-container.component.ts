@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { State } from '@state/reducers';
-import { InitFormAction } from '@state/actions';
+import { AppState } from '@state/reducers';
+import { sendValidFormAction } from '@root/app/state/actions';
 
 @Component({
   selector: 'app-register-container',
@@ -10,10 +11,29 @@ import { InitFormAction } from '@state/actions';
   styleUrls: ['./register-container.component.scss']
 })
 export class RegisterContainerComponent implements OnInit {
+  // @TODO: move the form to a presentational component
+  public registerForm: FormGroup;
 
-  constructor(private store: Store<State>) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private store: Store<AppState>
+  ) {}
 
   public ngOnInit(): void {
-    this.store.dispatch(new InitFormAction());
+    this.registerForm = this.formBuilder.group({
+      title: [''],
+      firstName: ['', Validators.required],
+      lastName: [''],
+      username: [''],
+      movie: [''],
+      country: [''],
+      postCode: [''],
+    });
+  }
+
+  public onSubmit() {
+    console.log(this.registerForm.value);
+    // @TODO: create an effect to redirect to /thankyou
+    this.store.dispatch(sendValidFormAction(this.registerForm.value));
   }
 }

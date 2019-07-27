@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+
+import { AppState, FormState } from '@state/reducers';
+import { Observable } from 'rxjs';
+import { getFormState } from '@state/selectors';
 
 @Component({
   selector: 'app-thank-you-container',
@@ -6,10 +11,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./thank-you-container.component.scss']
 })
 export class ThankYouContainerComponent implements OnInit {
+  public formState$: Observable<FormState>;
 
-  constructor() { }
+  constructor(private store: Store<AppState>) {}
 
-  ngOnInit() {
+  public ngOnInit(): void {
+    this.formState$ = this.store.select(getFormState);
   }
-
 }
