@@ -9,15 +9,15 @@ import {
 import { environment } from '@root/environments/environment';
 import { FormState, formReducer } from './form.reducer';
 
-export interface State {
+export interface AppState {
   formState: FormState;
 }
 
-export const reducers: ActionReducerMap<State> = {
+export const reducers: ActionReducerMap<AppState> = {
   formState: formReducer
 };
 
-export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : [];
+export const metaReducers: MetaReducer<AppState>[] = !environment.production ? [] : [];
 
 export * from './form.reducer';
 

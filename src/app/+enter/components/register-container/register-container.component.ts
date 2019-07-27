@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { State } from '@state/reducers';
+import { AppState } from '@state/reducers';
 import { sendValidFormAction } from '@root/app/state/actions';
 
 @Component({
@@ -16,7 +16,7 @@ export class RegisterContainerComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private store: Store<State>
+    private store: Store<AppState>
   ) {}
 
   public ngOnInit(): void {
