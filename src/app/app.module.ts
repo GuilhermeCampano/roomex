@@ -7,7 +7,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { reducers, metaReducers } from '@state/reducers';
-import { AppEffects } from '@state/effects';
+import { FormEffects } from '@state/effects';
 import { environment } from '@root/environments/environment';
 
 @NgModule({
@@ -19,7 +19,7 @@ import { environment } from '@root/environments/environment';
     AppRoutingModule,
     StoreModule.forRoot(reducers, {metaReducers}),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
-    EffectsModule.forRoot([AppEffects])
+    EffectsModule.forRoot([FormEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]

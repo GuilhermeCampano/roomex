@@ -32,7 +32,6 @@ export class RegisterContainerComponent implements OnInit {
   }
 
   public onSubmit() {
-    console.log(this.registerForm.value);
     // @TODO: create an effect to redirect to /thankyou
     this.store.dispatch(sendValidFormAction(this.registerForm.value));
   }
