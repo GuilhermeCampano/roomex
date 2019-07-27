@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  MOVIE_API: 'http://www.omdbapi.com/',
+  MOVIE_API_KEY: '83513884'
 };
 
 /*

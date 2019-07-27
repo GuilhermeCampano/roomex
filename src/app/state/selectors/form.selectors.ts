@@ -1,9 +1,9 @@
 import { createSelector } from '@ngrx/store';
 import { AppState, FormState } from '../reducers';
 
-export const selectFeature = (state: AppState) => state.formState;
+export const formFeature = (state: AppState) => state.form;
 
 export const getFormState = createSelector(
-  selectFeature,
+  formFeature,
   (formState: FormState) => formState
 );

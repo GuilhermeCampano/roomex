@@ -49,3 +49,12 @@
 <p>
   Form Status: {{ registerForm.status }}
 </p>
+
+<!-- @TODO move to a presentational component -->
+<ng-container *ngIf="hasMovies$ | async" >
+  <h1>Movies</h1>
+  <div *ngFor="let movie of movies$ | async">
+    <span>{{movie.Title}}</span>
+    <img width="50" [src]="movie.Poster" [alt]="movie.Title">
+  </div>
+</ng-container>

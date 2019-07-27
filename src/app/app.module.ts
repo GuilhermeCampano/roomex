@@ -3,11 +3,12 @@ import { NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { reducers, metaReducers } from '@state/reducers';
-import { FormEffects } from '@state/effects';
+import { FormEffects, MovieEffects } from '@state/effects';
 import { environment } from '@root/environments/environment';
 
 @NgModule({
@@ -17,9 +18,10 @@ import { environment } from '@root/environments/environment';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     StoreModule.forRoot(reducers, {metaReducers}),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
-    EffectsModule.forRoot([FormEffects])
+    EffectsModule.forRoot([FormEffects, MovieEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]
