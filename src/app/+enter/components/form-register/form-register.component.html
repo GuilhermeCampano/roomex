@@ -1,49 +1,98 @@
-<form [formGroup]="registerForm" (ngSubmit)="handleSubmit()">
-    <h3>Register</h3>
+<form class="register" [formGroup]="registerForm" (ngSubmit)="handleSubmit()">
+  <div class="register__group-label">Personal</div>
   
-    <label>
-      Title:
-      <input type="text" formControlName="title">
-    </label>
+  <div class="register__field-wrapper">
+    <label class="register__label" for="title">Title</label>
+    <select 
+      class="register__select"
+      name="title" 
+      formControlName="title">
+      <option *ngFor="let title of titleOptions" [ngValue]="title">
+        {{ title}}
+      </option>
+    </select> 
+  </div>
+
   
-    <label>
-      firstName:
-      <input type="text" formControlName="firstName">
-    </label>
-    
-    <label>
-      lastName:
-      <input type="text" formControlName="lastName">
-    </label>
+  <div class="register__field-wrapper">
+    <label class="register__label" for="firstName">First Name</label>
+    <input 
+      class="register__field"
+      [ngClass]="{'register__field--error': hasControlError('firstName')}"
+      type="text"
+      name="firstName"
+      formControlName="firstName">
+    <ng-container *ngIf="hasControlError('firstName')">
+      <label class="register__label--error">
+        First Name is required
+      </label>
+    </ng-container>
+  </div>
+
+  <div class="register__field-wrapper">
+    <label class="register__label" for="lastName">Last name</label>
+    <input 
+      class="register__field"
+      [ngClass]="{'register__field--error': hasControlError('lastName')}"
+      type="text"
+      name="lastName"
+      formControlName="lastName">
+  </div>
+
+  <div class="register__group-label">Account</div>
+
+  <div class="register__field-wrapper">
+    <label class="register__label" for="username">Username</label>
+    <label class="register__label register__label--optional">(Optional)</label>
+    <input 
+      class="register__field"
+      [ngClass]="{'register__field--error': hasControlError('username')}"
+      type="text"
+      name="username"
+      formControlName="username">
+  </div>
+
+  <div class="register__group-label">About</div>
+
+  <div class="register__field-wrapper">
+    <label class="register__label" for="movie">Favorite Movie</label>
+    <label class="register__label register__label--optional">(Optional)</label>
+    <input 
+      class="register__field"
+      [ngClass]="{'register__field--error': hasControlError('movie')}"
+      type="text"
+      name="movie"
+      formControlName="movie">
+  </div>
+
+  <div class="register__group-label">Address</div>
+
+  <div class="register__field-wrapper">
+    <label class="register__label" for="country">Country</label>
+    <select 
+      class="register__select"
+      name="country" 
+      formControlName="country">
+      <option value="">Choose your country</option>
+      <option *ngFor="let country  of countryOptions" [ngValue]="country">
+        {{ country }}
+      </option>
+    </select> 
+  </div>
+
+  <div class="register__field-wrapper">
+    <label class="register__label" for="postCode">postCode</label>
+    <input 
+      class="register__field"
+      [ngClass]="{'register__field--error': hasControlError('postCode')}"
+      type="text"
+      name="postCode"
+      formControlName="postCode">
+  </div>
   
-    <label>
-      username:
-      <input type="text" formControlName="username">
-    </label>
-  
-    <label>
-      username:
-      <input type="text" formControlName="username">
-    </label>
-  
-    <label>
-      movie:
-      <input type="text" formControlName="movie">
-    </label>
-  
-    <label>
-      country:
-      <input type="text" formControlName="country">
-    </label>
-  
-    <label>
-      postCode:
-      <input type="text" formControlName="postCode">
-    </label>
-  
-    <button type="submit" [disabled]="!registerForm.valid">Submit</button>
-  </form>
-  
-  <p>
-    Form Status: {{ registerForm.status }}
-  </p>
+  <button 
+    class="register__button-submit" 
+    type="submit">
+    Submit
+  </button>
+</form>

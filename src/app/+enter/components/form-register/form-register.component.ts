@@ -14,14 +14,27 @@ export class FormRegisterComponent implements OnInit, OnDestroy {
   @Output() public movieChange = new EventEmitter<string>();
 
   public registerForm: FormGroup;
+  public readonly titleOptions = ['Mr', 'Mrs', 'Ms', 'Dr'];
+  public readonly countryOptions = ['Ireland', 'United Kingdom'];
 
   private unsubscribe$ = new Subject<void>();
 
   constructor(private formBuilder: FormBuilder) {}
 
+  public handleSubmit(): void {
+    if (this.registerForm.valid) {
+      this.formSubmit.emit(this.registerForm.value);
+    }
+  }
+
+  public ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
+  }
+
   public ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
-      title: [''],
+      title: [this.titleOptions[0]],
       firstName: ['', Validators.required],
       lastName: [''],
       username: [''],
@@ -30,21 +43,14 @@ export class FormRegisterComponent implements OnInit, OnDestroy {
       postCode: [''],
     });
     this.registerForm.get('movie').valueChanges
-      .pipe(
-        takeUntil(this.unsubscribe$)
-      )
-      .subscribe(movieValue => {
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((movieValue) => {
         this.movieChange.emit(movieValue);
       });
   }
 
-  public ngOnDestroy(): void {
-    this.unsubscribe$.next();
-    this.unsubscribe$.complete();
+  public hasControlError(field: string): boolean {
+    const control = this.registerForm.get(field);
+    return control.invalid && (control.dirty || control.touched);
   }
-
-  public handleSubmit(): void {
-    this.formSubmit.emit(this.registerForm.value);
-  }
-
 }
