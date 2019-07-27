@@ -7,7 +7,7 @@ import {
 } from '@ngrx/store';
 
 import { environment } from '@root/environments/environment';
-import { FormState, formReducer } from './form-state.reducer';
+import { FormState, formReducer } from './form.reducer';
 
 export interface State {
   formState: FormState;
@@ -17,8 +17,7 @@ export const reducers: ActionReducerMap<State> = {
   formState: formReducer
 };
 
-
 export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : [];
 
-export * from './form-state.reducer';
+export * from './form.reducer';
 

@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { State } from '@state/reducers';
-import { SendValidFormAction } from '@root/app/state/actions';
+import { sendValidFormAction } from '@root/app/state/actions';
 
 @Component({
   selector: 'app-register-container',
@@ -17,9 +17,7 @@ export class RegisterContainerComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private store: Store<State>
-  ) {
-
-  }
+  ) {}
 
   public ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
@@ -36,7 +34,6 @@ export class RegisterContainerComponent implements OnInit {
   public onSubmit() {
     console.log(this.registerForm.value);
     // @TODO: create an effect to redirect to /thankyou
-    this.store.dispatch(new SendValidFormAction(this.registerForm.value));
-    
+    this.store.dispatch(sendValidFormAction(this.registerForm.value));
   }
 }

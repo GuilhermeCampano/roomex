@@ -1,4 +1,4 @@
-import { reducer, initialState } from './form-state.reducer';
+import { reducer, initialState } from './form.reducer';
 
 describe('FormState Reducer', () => {
   describe('an unknown action', () => {

@@ -1,6 +1,6 @@
-import { Action } from '@ngrx/store';
+import { Action, createReducer, on } from '@ngrx/store';
 
-import { FormActionsActionTypes, FormActions } from '@state/actions';
+import { sendValidFormAction } from '@state/actions';
 
 // @TODO: add a model similar?
 export interface FormState {
@@ -23,14 +23,14 @@ export const initialFormState: FormState = {
   postCode: undefined,
 };
 
-export function formReducer(state = initialFormState, action: FormActions): FormState {
-  switch (action.type) {
-    case FormActionsActionTypes.SEND_VALID_FORM:
-      return {
-        ...state,
-        ...action.payload
-      };
-    default:
-      return state;
-  }
+const reducer = createReducer(
+  initialFormState,
+  on(sendValidFormAction, (state, formData) => ({
+    ...state,
+    ...formData
+  }))
+);
+
+export function formReducer( state: FormState | undefined, action: Action) {
+  return reducer(state, action);
 }

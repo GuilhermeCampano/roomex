@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 
 import { State, FormState } from '@state/reducers';
 import { Observable } from 'rxjs';
+import { getFormState } from '@root/app/state/selectors/form.selectors';
 
 @Component({
   selector: 'app-thank-you-container',
@@ -15,7 +16,7 @@ export class ThankYouContainerComponent implements OnInit {
   constructor(private store: Store<State>) {}
 
   public ngOnInit(): void {
-    this.formState$ = this.store.select('formState');
+    this.formState$ = this.store.select(getFormState);
   }
 
 }
