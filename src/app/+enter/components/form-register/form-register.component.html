@@ -1,0 +1,49 @@
+<form [formGroup]="registerForm" (ngSubmit)="handleSubmit()">
+    <h3>Register</h3>
+  
+    <label>
+      Title:
+      <input type="text" formControlName="title">
+    </label>
+  
+    <label>
+      firstName:
+      <input type="text" formControlName="firstName">
+    </label>
+    
+    <label>
+      lastName:
+      <input type="text" formControlName="lastName">
+    </label>
+  
+    <label>
+      username:
+      <input type="text" formControlName="username">
+    </label>
+  
+    <label>
+      username:
+      <input type="text" formControlName="username">
+    </label>
+  
+    <label>
+      movie:
+      <input type="text" formControlName="movie">
+    </label>
+  
+    <label>
+      country:
+      <input type="text" formControlName="country">
+    </label>
+  
+    <label>
+      postCode:
+      <input type="text" formControlName="postCode">
+    </label>
+  
+    <button type="submit" [disabled]="!registerForm.valid">Submit</button>
+  </form>
+  
+  <p>
+    Form Status: {{ registerForm.status }}
+  </p>

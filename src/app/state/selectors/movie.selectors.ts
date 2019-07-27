@@ -1,5 +1,5 @@
 import { createSelector } from '@ngrx/store';
-import { AppState, MovieState } from '../reducers';
+import { AppState } from '../reducers';
 
 export const movieFeature = (state: AppState) => state.movies;
 
@@ -20,5 +20,5 @@ export const isMoviesLoading = createSelector(
 
 export const hasMovies = createSelector(
   getMovieState,
-  ({isLoading, list }) => !isLoading && !!list && list.length > 0
+  ({isLoading, list}) => !isLoading && !!list && list.length > 0
 );

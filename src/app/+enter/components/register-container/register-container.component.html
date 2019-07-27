@@ -1,60 +1,10 @@
-<p>register-container works!</p>
-
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-  <h3>Register</h3>
-
-  <label>
-    Title:
-    <input type="text" formControlName="title">
-  </label>
-
-  <label>
-    firstName:
-    <input type="text" formControlName="firstName">
-  </label>
-  
-  <label>
-    lastName:
-    <input type="text" formControlName="lastName">
-  </label>
-
-  <label>
-    username:
-    <input type="text" formControlName="username">
-  </label>
-
-  <label>
-    username:
-    <input type="text" formControlName="username">
-  </label>
-
-  <label>
-    movie:
-    <input type="text" formControlName="movie">
-  </label>
-
-  <label>
-    country:
-    <input type="text" formControlName="country">
-  </label>
-
-  <label>
-    postCode:
-    <input type="text" formControlName="postCode">
-  </label>
-
-  <button type="submit" [disabled]="!registerForm.valid">Submit</button>
-</form>
-
-<p>
-  Form Status: {{ registerForm.status }}
-</p>
 
 <!-- @TODO move to a presentational component -->
-<ng-container *ngIf="hasMovies$ | async" >
-  <h1>Movies</h1>
-  <div *ngFor="let movie of movies$ | async">
-    <span>{{movie.Title}}</span>
-    <img width="50" [src]="movie.Poster" [alt]="movie.Title">
-  </div>
+<app-form-register 
+  (formSubmit)="onFormSubmit($event)"
+  (movieChange)="onMovieChange($event)">
+</app-form-register>
+
+<ng-container *ngIf="!!(hasMovies$ | async)" >
+  <app-movie-selection [movies]="(movies$ | async)"></app-movie-selection >
 </ng-container>
