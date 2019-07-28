@@ -10,15 +10,10 @@ export const getMovieState = createSelector(
 
 export const getMovies = createSelector(
   getMovieState,
-  ({list}) => list
+  ({list}) => list && list.filter((_, index) => index < 3)
 );
 
 export const isMoviesLoading = createSelector(
   getMovieState,
   ({isLoading}) => isLoading
-);
-
-export const hasMovies = createSelector(
-  getMovieState,
-  ({isLoading, list}) => !isLoading && !!list && list.length > 0
 );

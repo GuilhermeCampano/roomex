@@ -6,7 +6,7 @@ import { Subscription, Observable } from 'rxjs';
 import { Movie, RegisterForm } from '@app/models';
 import { AppState } from '@state/reducers';
 import { sendValidFormAction, fetchMoviesAction } from '@state/actions';
-import { getMovies, isMoviesLoading, hasMovies } from '@state/selectors';
+import { getMovies } from '@state/selectors';
 
 @Component({
   selector: 'app-register-container',
@@ -14,14 +14,12 @@ import { getMovies, isMoviesLoading, hasMovies } from '@state/selectors';
   styleUrls: ['./register-container.component.scss']
 })
 export class RegisterContainerComponent implements OnInit {
-  public hasMovies$: Observable<boolean>;
   public movies$: Observable<Movie[]>;
 
   constructor(private store: Store<AppState>) {}
 
   public ngOnInit(): void {
     this.movies$ = this.store.select(getMovies);
-    this.hasMovies$ = this.store.select(hasMovies);
   }
 
   public onFormSubmit(formValues: RegisterForm): void {

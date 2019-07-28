@@ -1,9 +1,9 @@
-import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, OnDestroy, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { takeUntil, distinctUntilChanged } from 'rxjs/operators';
 
-import { RegisterForm } from '@app/models';
+import { RegisterForm, Movie } from '@app/models';
 import { validateNotNull, validateUserName, validateUKPostCode, validateIrelandPostCode } from '@app/utils';
 
 @Component({
@@ -12,10 +12,14 @@ import { validateNotNull, validateUserName, validateUKPostCode, validateIrelandP
   styleUrls: ['./form-register.component.scss']
 })
 export class FormRegisterComponent implements OnInit, OnDestroy {
+  @Input() public movies: Movie[];
+
   @Output() public formSubmit = new EventEmitter<RegisterForm>();
   @Output() public movieChange = new EventEmitter<string>();
 
   public registerForm: FormGroup;
+  public showMovieSelection = true;
+
   // @TODO add a constants for these options
   public readonly titleOptions = ['Mr', 'Mrs', 'Ms', 'Dr'];
   public readonly countryOptions = ['Ireland', 'United Kingdom'];
@@ -23,14 +27,6 @@ export class FormRegisterComponent implements OnInit, OnDestroy {
   private unsubscribe$ = new Subject<void>();
 
   constructor(private formBuilder: FormBuilder) {}
-
-  public handleSubmit(): void {
-    if (!this.registerForm.valid) {
-      this.registerForm.markAllAsTouched();
-      return;
-    }
-    this.formSubmit.emit(this.registerForm.value);
-  }
 
   public ngOnDestroy(): void {
     this.unsubscribe$.next();
@@ -75,11 +71,24 @@ export class FormRegisterComponent implements OnInit, OnDestroy {
       });
 
     this.registerForm.get('movie').valueChanges
-      .pipe(takeUntil(this.unsubscribe$))
+      .pipe(takeUntil(this.unsubscribe$), distinctUntilChanged())
       .subscribe((movieValue) => {
         this.movieChange.emit(movieValue);
+        this.showMovieSelection = true;
       });
+  }
 
+  public handleSubmit(): void {
+    if (!this.registerForm.valid) {
+      this.registerForm.markAllAsTouched();
+      return;
+    }
+    this.formSubmit.emit(this.registerForm.value);
+  }
+
+  public onMovieClick(movieEvent: string): void {
+    this.registerForm.get('movie').setValue(movieEvent);
+    this.showMovieSelection = false;
   }
 
   public hasControlError(field: string): boolean {

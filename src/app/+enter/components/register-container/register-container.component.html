@@ -1,10 +1,11 @@
 
 <!-- @TODO move to a presentational component -->
-<app-form-register 
+<app-form-register
+  [movies]="movies$ | async"
   (formSubmit)="onFormSubmit($event)"
   (movieChange)="onMovieChange($event)">
 </app-form-register>
 
-<ng-container *ngIf="!!(hasMovies$ | async)" >
+<!-- <ng-container *ngIf="!!(hasMovies$ | async)" >
   <app-movie-selection [movies]="(movies$ | async)"></app-movie-selection >
-</ng-container>
+</ng-container> -->

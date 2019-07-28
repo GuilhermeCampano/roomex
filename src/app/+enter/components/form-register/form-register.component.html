@@ -76,6 +76,11 @@
       type="text"
       name="movie"
       formControlName="movie">
+    <app-movie-selection 
+      *ngIf="movies?.length && showMovieSelection" 
+      (movieClick)="onMovieClick($event)"
+      [movies]="movies">
+    </app-movie-selection>
   </div>
 
   <div class="register__group-label">Address</div>

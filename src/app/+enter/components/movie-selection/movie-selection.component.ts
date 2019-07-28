@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 import { Movie } from '@app/models';
 
@@ -9,4 +9,10 @@ import { Movie } from '@app/models';
 })
 export class MovieSelectionComponent {
   @Input() public movies: Movie[];
+
+  @Output() public movieClick = new EventEmitter<string>();
+
+  public handleClick = (movie: Movie) => {
+    this.movieClick.emit(movie.Title);
+  }
 }

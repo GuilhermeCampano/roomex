@@ -1,0 +1,12 @@
+:host {
+  position: absolute;
+  min-height: 50px;
+  height: auto;
+  width: 340px;
+  background: papayawhip;
+}
+.movie-selection {
+  &__item {
+    border-bottom: 1px grey solid;
+  }
+}
