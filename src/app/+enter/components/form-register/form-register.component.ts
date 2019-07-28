@@ -44,7 +44,10 @@ export class FormRegisterComponent implements OnInit, OnDestroy {
         Validators.required,
         Validators.pattern(/^[a-zA-Z]+$/)
       ])],
-      lastName: ['', Validators.required],
+      lastName: ['', Validators.compose([
+        Validators.required,
+        Validators.pattern(/^[a-zA-Z]+$/)
+      ])],
       username: ['', validateUserName],
       movie: [''],
       country: ['', validateNotNull],
@@ -68,6 +71,7 @@ export class FormRegisterComponent implements OnInit, OnDestroy {
         if (country === 'United Kingdom') {
           postCodeControl.setValidators(validateUKPostCode);
         }
+        postCodeControl.updateValueAndValidity();
       });
 
     this.registerForm.get('movie').valueChanges
@@ -86,5 +90,41 @@ export class FormRegisterComponent implements OnInit, OnDestroy {
   public get isLastNameDisabled(): boolean {
     const {firstName} = this.registerForm.value;
     return !firstName;
+  }
+
+  public get firstNameErrorLabel(): string {
+    const control = this.registerForm.get('firstName');
+    if (control.errors.required) {
+      return 'First Name is required';
+    } else if (control.errors.pattern) {
+      return 'First Name can only contain characters';
+    }
+  }
+
+  public get lastNameErrorLabel(): string {
+    const control = this.registerForm.get('lastName');
+    if (control.errors.required) {
+      return 'Last Name is required';
+    } else if (control.errors.pattern) {
+      return 'Last Name can only contain characters';
+    }
+  }
+
+  public get userNameErrorLabel(): string {
+    const control = this.registerForm.get('username');
+    if (control.errors.email) {
+      return 'A valid email must be provided';
+    } else if (control.errors.minLength) {
+      return 'Username must have at least 5 characters';
+    }
+  }
+
+  public get postCodeErrorLabel(): string {
+    const control = this.registerForm.get('postCode');
+    if (control.errors.iePostCode) {
+      return 'Invalid Ireland Post Code';
+    } else if (control.errors.ukPostCode) {
+      return 'Invalid United Kingdom Post Code';
+    }
   }
 }

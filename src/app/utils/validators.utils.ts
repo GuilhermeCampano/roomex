@@ -27,7 +27,7 @@ export const validateUserName = (control: AbstractControl): ValidationErrors => 
 export const validateIrelandPostCode = (control: AbstractControl): ValidationErrors => {
   const { value } = control;
   if (!!value.length && (value.length < 6 || value.length > 10)) {
-    return {length: true};
+    return {iePostCode: true};
   }
 
   return null;
@@ -38,7 +38,7 @@ export const validateUKPostCode = (control: AbstractControl): ValidationErrors =
   const ukPostCodeRegex = /^[A-Za-z]{1,2}[0-9Rr][0-9A-Za-z]? [0-9][ABD-HJLNP-UW-Zabd-hjlnp-uw-z]{2}$/;
 
   if (!!value.length && !ukPostCodeRegex.test(value)) {
-    return {length: true};
+    return {ukPostCode: true};
   }
 
   return null;

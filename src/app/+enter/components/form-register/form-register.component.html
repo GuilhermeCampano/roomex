@@ -24,7 +24,7 @@
       formControlName="firstName">
     <ng-container *ngIf="hasControlError('firstName')">
       <label class="register__label--error">
-        First Name is invalid
+        {{firstNameErrorLabel}}
       </label>
     </ng-container>
   </div>
@@ -42,7 +42,7 @@
       formControlName="lastName">
     <ng-container *ngIf="hasControlError('lastName')">
       <label class="register__label--error">
-        Last Name is invalid
+        {{lastNameErrorLabel}}
       </label>
     </ng-container>
   </div>
@@ -60,7 +60,7 @@
       formControlName="username">
     <ng-container *ngIf="hasControlError('username')">
       <label class="register__label--error">
-        Username is invalid
+        {{userNameErrorLabel}}
       </label>
     </ng-container>
   </div>
@@ -109,7 +109,7 @@
       formControlName="postCode">
     <ng-container *ngIf="hasControlError('postCode')">
       <label class="register__label--error">
-        Post Code is invalid
+        {{postCodeErrorLabel}}
       </label>
     </ng-container>
   </div>
