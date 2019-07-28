@@ -75,9 +75,14 @@
       [ngClass]="{'register__field--error': hasControlError('movie')}"
       type="text"
       name="movie"
-      formControlName="movie">
+      formControlName="movie"
+      autocomplete="off"
+      (focus)="movieFocus = true"
+      (blur)="movieFocus = false">
     <app-movie-selection 
-      *ngIf="movies?.length && showMovieSelection" 
+      *ngIf="showMovieSelection"
+      (mouseenter)="movieSelectionFocus = true"
+      (mouseleave)="movieSelectionFocus = false"
       (movieClick)="onMovieClick($event)"
       [movies]="movies">
     </app-movie-selection>

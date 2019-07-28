@@ -12,13 +12,14 @@ import { validateNotNull, validateUserName, validateUKPostCode, validateIrelandP
   styleUrls: ['./form-register.component.scss']
 })
 export class FormRegisterComponent implements OnInit, OnDestroy {
-  @Input() public movies: Movie[];
+  @Input() public movies: Movie[] = [];
 
   @Output() public formSubmit = new EventEmitter<RegisterForm>();
   @Output() public movieChange = new EventEmitter<string>();
 
   public registerForm: FormGroup;
-  public showMovieSelection = true;
+  public movieFocus = false;
+  public movieSelectionFocus = false;
 
   // @TODO add a constants for these options
   public readonly titleOptions = ['Mr', 'Mrs', 'Ms', 'Dr'];
@@ -76,7 +77,6 @@ export class FormRegisterComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.unsubscribe$), distinctUntilChanged())
       .subscribe((movieValue) => {
         this.movieChange.emit(movieValue);
-        this.showMovieSelection = true;
       });
   }
 
@@ -90,7 +90,8 @@ export class FormRegisterComponent implements OnInit, OnDestroy {
 
   public onMovieClick(movieEvent: string): void {
     this.registerForm.get('movie').setValue(movieEvent);
-    this.showMovieSelection = false;
+    this.movieFocus = false;
+    this.movieSelectionFocus = false;
   }
 
   public hasControlError(field: string): boolean {
@@ -137,5 +138,13 @@ export class FormRegisterComponent implements OnInit, OnDestroy {
     } else if (control.errors.ukPostCode) {
       return 'Invalid United Kingdom Post Code';
     }
+  }
+
+  public get showMovieSelection(): boolean {
+    const hasMovies = !!this.movies && !!this.movies.length;
+    if (hasMovies && (this.movieFocus || this.movieSelectionFocus)) {
+      return true;
+    }
+    return false;
   }
 }
