@@ -40,18 +40,18 @@ describe('ReviewRegisterComponent', () => {
   it('should show the title followed by the full name', () => {
     const {title, firstName, lastName} = mockRegister;
     const titleAndName = `${title}. ${firstName} ${lastName}`;
-    expect(element.textContent).toContain(titleAndName);
+    expect(element.textContent).toContain('Name: ' + titleAndName);
   });
 
   it('should show the username', () => {
-    expect(element.textContent).toContain(mockRegister.username);
+    expect(element.textContent).toContain('Username: ' + mockRegister.username);
   });
 
   it('should show the country selected', () => {
-    expect(element.textContent).toContain(mockRegister.country);
+    expect(element.textContent).toContain('Country: ' + mockRegister.country);
   });
 
   it('should show the post code', () => {
-    expect(element.textContent).toContain(mockRegister.postCode);
+    expect(element.textContent).toContain('Post Code: ' + mockRegister.postCode);
   });
 });

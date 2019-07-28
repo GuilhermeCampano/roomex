@@ -5,12 +5,12 @@
   {{register.title}}. {{register.firstName}} {{register.lastName}}
 </div>
 
-<div class="review-register__item">
+<div class="review-register__item" *ngIf="!!register.username">
   <span class="review-register__item-title">Username:</span>
   {{register.username}}
 </div>
 
-<div class="review-register__item">
+<div class="review-register__item" *ngIf="!!register.movie">
   <span class="review-register__item-title">Favourite Movie:</span>
   {{register.movie}}
 </div>
