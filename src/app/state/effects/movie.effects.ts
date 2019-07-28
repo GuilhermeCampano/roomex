@@ -32,7 +32,7 @@ export class MovieEffects {
   public getMovies = query => {
     const { MOVIE_API, MOVIE_API_KEY } = environment;
     return this.http.get(`${MOVIE_API}?apikey=${MOVIE_API_KEY}&type=movie&page=1&s=${query}`);
-  };
+  }
 
   constructor(private actions$: Actions, private http: HttpClient) {}
 }

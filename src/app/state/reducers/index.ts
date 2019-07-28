@@ -7,8 +7,8 @@ import {
 } from '@ngrx/store';
 
 import { environment } from '@root/environments/environment';
-import { FormState, formReducer } from './form.reducer';
-import { MovieState, movieReducer } from './movie.reducer';
+import { formReducer, FormState } from './form.reducer';
+import { movieReducer, MovieState } from './movie.reducer';
 
 export interface AppState {
   form: FormState;
