@@ -37,6 +37,7 @@
         'register__field--error': hasControlError('lastName'),
         'register__field--disabled': isLastNameDisabled
       }"
+      [attr.disabled]="isLastNameDisabled ? '' : null"
       type="text"
       name="lastName"
       formControlName="lastName">

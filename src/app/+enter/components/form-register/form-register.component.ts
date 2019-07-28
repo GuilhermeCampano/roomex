@@ -53,13 +53,6 @@ export class FormRegisterComponent implements OnInit, OnDestroy {
       postCode: [''],
     });
 
-    this.registerForm.get('firstName').valueChanges
-      .pipe(takeUntil(this.unsubscribe$))
-      .subscribe((firstName) => {
-        const lastNameControl = this.registerForm.get('lastName');
-        !!firstName ? lastNameControl.enable() : lastNameControl.disable();
-      });
-
     this.registerForm.get('country').valueChanges
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((country) => {
@@ -68,7 +61,10 @@ export class FormRegisterComponent implements OnInit, OnDestroy {
           postCodeControl.setValidators(validateIrelandPostCode);
         }
         if (country === 'United Kingdom') {
-          postCodeControl.setValidators(validateUKPostCode);
+          postCodeControl.setValidators(Validators.compose([
+            Validators.required,
+            validateUKPostCode
+          ]));
         }
         postCodeControl.updateValueAndValidity();
       });
@@ -108,36 +104,50 @@ export class FormRegisterComponent implements OnInit, OnDestroy {
     const control = this.registerForm.get('firstName');
     if (control.errors.required) {
       return 'First Name is required';
-    } else if (control.errors.pattern) {
+    }
+    if (control.errors.pattern) {
       return 'First Name can only contain characters';
     }
+    return;
   }
 
   public get lastNameErrorLabel(): string {
     const control = this.registerForm.get('lastName');
     if (control.errors.required) {
       return 'Last Name is required';
-    } else if (control.errors.pattern) {
+    }
+    if (control.errors.pattern) {
       return 'Last Name can only contain characters';
     }
+    return;
   }
 
   public get userNameErrorLabel(): string {
     const control = this.registerForm.get('username');
     if (control.errors.email) {
       return 'A valid email must be provided';
-    } else if (control.errors.minLength) {
+    }
+    if (control.errors.minLength) {
       return 'Username must have at least 5 characters';
     }
+    return;
   }
 
   public get postCodeErrorLabel(): string {
     const control = this.registerForm.get('postCode');
     if (control.errors.iePostCode) {
       return 'Invalid Ireland Post Code';
-    } else if (control.errors.ukPostCode) {
+    }
+
+    if (control.errors.ukPostCode) {
       return 'Invalid United Kingdom Post Code';
     }
+
+    if (control.errors.required) {
+      return 'Post Code is required';
+    }
+
+    return;
   }
 
   public get showMovieSelection(): boolean {
