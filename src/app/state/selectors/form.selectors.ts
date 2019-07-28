@@ -6,5 +6,5 @@ export const formFeature = (state: AppState) => state.form;
 
 export const getFormState = createSelector(
   formFeature,
-  (formState) => formState
+  formState => formState
 );

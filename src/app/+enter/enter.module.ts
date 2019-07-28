@@ -9,10 +9,6 @@ import { MovieSelectionComponent } from './components/movie-selection/movie-sele
 
 @NgModule({
   declarations: [RegisterContainerComponent, FormRegisterComponent, MovieSelectionComponent],
-  imports: [
-    CommonModule,
-    EnterRoutingModule,
-    ReactiveFormsModule
-  ]
+  imports: [CommonModule, EnterRoutingModule, ReactiveFormsModule]
 })
-export class EnterModule { }
+export class EnterModule {}

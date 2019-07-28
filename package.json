@@ -1,6 +1,6 @@
 {
   "name": "roomex",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -9,7 +9,18 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
-  "private": true,
+  "private": false,
+  "lint-staged": {
+    "*.ts": [
+      "prettier --write",
+      "tslint --project tsconfig.spec.json",
+      "git add"
+    ],
+    "*.html": [
+      "prettier --write",
+      "git add"
+    ]
+  },
   "dependencies": {
     "@angular/animations": "~8.1.2",
     "@angular/common": "~8.1.2",
@@ -44,6 +55,8 @@
     "karma-coverage-istanbul-reporter": "~2.0.1",
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
+    "lint-staged": "^9.2.1",
+    "prettier": "^1.18.2",
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",

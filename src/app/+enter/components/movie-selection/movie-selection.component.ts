@@ -14,5 +14,5 @@ export class MovieSelectionComponent {
 
   public handleClick = (movie: Movie) => {
     this.movieClick.emit(movie.Title);
-  }
+  };
 }

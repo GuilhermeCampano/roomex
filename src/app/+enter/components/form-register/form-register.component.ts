@@ -4,7 +4,12 @@ import { Subject } from 'rxjs';
 import { takeUntil, distinctUntilChanged } from 'rxjs/operators';
 
 import { RegisterForm, Movie } from '@app/models';
-import { validateNotNull, validateUsername, validateUKPostCode, validateIrelandPostCode } from '@app/utils';
+import {
+  validateNotNull,
+  validateUsername,
+  validateUKPostCode,
+  validateIrelandPostCode
+} from '@app/utils';
 
 @Component({
   selector: 'app-form-register',
@@ -39,39 +44,43 @@ export class FormRegisterComponent implements OnInit, OnDestroy {
   public ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
       title: [this.titleOptions[0]],
-      firstName: ['', Validators.compose([
-        Validators.required,
-        Validators.pattern(this.charsRegex)
-      ])],
-      lastName: ['', Validators.compose([
-        Validators.required,
-        Validators.pattern(this.charsRegex)
-      ])],
+      firstName: [
+        '',
+        Validators.compose([Validators.required, Validators.pattern(this.charsRegex)])
+      ],
+      lastName: [
+        '',
+        Validators.compose([Validators.required, Validators.pattern(this.charsRegex)])
+      ],
       username: ['', validateUsername],
       movie: [''],
       country: ['', validateNotNull],
-      postCode: [''],
+      postCode: ['']
     });
 
-    this.registerForm.get('country').valueChanges
-      .pipe(takeUntil(this.unsubscribe$))
-      .subscribe((country) => {
+    this.registerForm
+      .get('country')
+      .valueChanges.pipe(takeUntil(this.unsubscribe$))
+      .subscribe(country => {
         const postCodeControl = this.registerForm.get('postCode');
         if (country === 'Ireland') {
           postCodeControl.setValidators(validateIrelandPostCode);
         }
         if (country === 'United Kingdom') {
-          postCodeControl.setValidators(Validators.compose([
-            Validators.required,
-            validateUKPostCode
-          ]));
+          postCodeControl.setValidators(
+            Validators.compose([Validators.required, validateUKPostCode])
+          );
         }
         postCodeControl.updateValueAndValidity();
       });
 
-    this.registerForm.get('movie').valueChanges
-      .pipe(takeUntil(this.unsubscribe$), distinctUntilChanged())
-      .subscribe((movieValue) => {
+    this.registerForm
+      .get('movie')
+      .valueChanges.pipe(
+        takeUntil(this.unsubscribe$),
+        distinctUntilChanged()
+      )
+      .subscribe(movieValue => {
         this.movieChange.emit(movieValue);
       });
   }
@@ -96,7 +105,7 @@ export class FormRegisterComponent implements OnInit, OnDestroy {
   }
 
   public get isLastNameDisabled(): boolean {
-    const {firstName} = this.registerForm.value;
+    const { firstName } = this.registerForm.value;
     return !firstName;
   }
 

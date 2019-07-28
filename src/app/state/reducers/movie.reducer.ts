@@ -15,7 +15,7 @@ export const initialMovieState: MovieState = {
 
 const reducer = createReducer(
   initialMovieState,
-  on(fetchMoviesAction, (state) => ({
+  on(fetchMoviesAction, state => ({
     ...state,
     list: [],
     isLoading: true
@@ -25,7 +25,7 @@ const reducer = createReducer(
     list: payaload.movies,
     isLoading: false
   })),
-  on(fetchMoviesFailedAction, (state) => ({
+  on(fetchMoviesFailedAction, state => ({
     ...state,
     isLoading: false
   }))

@@ -27,6 +27,6 @@ export class RegisterContainerComponent implements OnInit {
   }
 
   public onMovieChange(movieQuery: string): void {
-    this.store.dispatch(fetchMoviesAction({movieQuery}));
+    this.store.dispatch(fetchMoviesAction({ movieQuery }));
   }
 }

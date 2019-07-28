@@ -12,7 +12,7 @@ export const initialFormState: FormState = {
   username: undefined,
   movie: undefined,
   country: undefined,
-  postCode: undefined,
+  postCode: undefined
 };
 
 const reducer = createReducer(

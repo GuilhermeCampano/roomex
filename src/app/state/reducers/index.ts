@@ -24,4 +24,3 @@ export const metaReducers: MetaReducer<AppState>[] = !environment.production ? [
 
 export * from './form.reducer';
 export * from './movie.reducer';
-
