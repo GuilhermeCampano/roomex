@@ -1,7 +1,7 @@
 import { Action, createReducer, on } from '@ngrx/store';
 
-import { sendValidFormAction } from '@state/actions';
 import { RegisterForm } from '@app/models';
+import { sendValidFormAction } from '@state/actions';
 
 export type FormState = RegisterForm;
 
@@ -12,7 +12,7 @@ export const initialFormState: FormState = {
   username: undefined,
   movie: undefined,
   country: undefined,
-  postCode: undefined,
+  postCode: undefined
 };
 
 const reducer = createReducer(

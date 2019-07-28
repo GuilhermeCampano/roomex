@@ -67,7 +67,18 @@
       "as-needed"
     ],
     "object-literal-sort-keys": false,
-    "ordered-imports": false,
+    "ordered-imports": [
+      true,
+      {
+        "import-sources-order": "case-insensitive",
+        "named-imports-order": "case-insensitive",
+        "grouped-imports": true,
+        "groups": [
+          "(^@angular|^@ngrx|^rxjs)",
+          "(^@root|^@app|^@state|^./|^../)"
+        ]
+      }
+    ],
     "quotemark": [
       true,
       "single"

@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ReviewRegisterComponent } from './review-register.component';
 import { RegisterForm } from '@app/models';
+import { ReviewRegisterComponent } from './review-register.component';
 
 const mockRegister: RegisterForm = {
   title: 'Mr',
@@ -20,9 +20,8 @@ describe('ReviewRegisterComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ReviewRegisterComponent ]
-    })
-    .compileComponents();
+      declarations: [ReviewRegisterComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -38,7 +37,7 @@ describe('ReviewRegisterComponent', () => {
   });
 
   it('should show the title followed by the full name', () => {
-    const {title, firstName, lastName} = mockRegister;
+    const { title, firstName, lastName } = mockRegister;
     const titleAndName = `${title}. ${firstName} ${lastName}`;
     expect(element.textContent).toContain('Name: ' + titleAndName);
   });
