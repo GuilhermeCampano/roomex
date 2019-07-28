@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormState } from '@state/reducers';
+import { RegisterForm } from '@app/models';
 
 @Component({
   selector: 'app-review-register',
@@ -7,5 +7,5 @@ import { FormState } from '@state/reducers';
   styleUrls: ['./review-register.component.scss']
 })
 export class ReviewRegisterComponent {
-  @Input() public register: FormState;
+  @Input() public register: RegisterForm;
 }

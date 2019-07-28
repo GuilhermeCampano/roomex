@@ -4,7 +4,7 @@ import { Subject } from 'rxjs';
 import { takeUntil, distinctUntilChanged } from 'rxjs/operators';
 
 import { RegisterForm, Movie } from '@app/models';
-import { validateNotNull, validateUserName, validateUKPostCode, validateIrelandPostCode } from '@app/utils';
+import { validateNotNull, validateUsername, validateUKPostCode, validateIrelandPostCode } from '@app/utils';
 
 @Component({
   selector: 'app-form-register',
@@ -47,7 +47,7 @@ export class FormRegisterComponent implements OnInit, OnDestroy {
         Validators.required,
         Validators.pattern(this.charsRegex)
       ])],
-      username: ['', validateUserName],
+      username: ['', validateUsername],
       movie: [''],
       country: ['', validateNotNull],
       postCode: [''],

@@ -8,7 +8,7 @@ export const validateNotNull = (control: AbstractControl): ValidationErrors => {
   return null;
 };
 
-export const validateUserName = (control: AbstractControl): ValidationErrors => {
+export const validateUsername = (control: AbstractControl): ValidationErrors => {
   const { value } = control;
   const isAnEmail = /@/;
   const emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
@@ -26,7 +26,8 @@ export const validateUserName = (control: AbstractControl): ValidationErrors => 
 
 export const validateIrelandPostCode = (control: AbstractControl): ValidationErrors => {
   const { value } = control;
-  if (!!value.length && (value.length < 6 || value.length > 10)) {
+  const iePostCodeRegex = /^[a-zA-Z0-9 ]{6,10}$/;
+  if (!!value.length && !iePostCodeRegex.test(value)) {
     return {iePostCode: true};
   }
 

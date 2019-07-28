@@ -1,6 +1,6 @@
 <form class="register" [formGroup]="registerForm" (ngSubmit)="handleSubmit()">
   <div class="register__group-label">Personal</div>
-  
+
   <div class="register__field-wrapper">
     <label class="register__label" for="title">Title</label>
     <select 
@@ -8,12 +8,11 @@
       name="title" 
       formControlName="title">
       <option *ngFor="let title of titleOptions" [ngValue]="title">
-        {{ title}}
+        {{title}}
       </option>
     </select> 
   </div>
 
-  
   <div class="register__field-wrapper">
     <label class="register__label" for="firstName">First Name</label>
     <input 
