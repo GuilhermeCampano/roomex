@@ -25,6 +25,8 @@ export class FormRegisterComponent implements OnInit, OnDestroy {
   public readonly countryOptions = ['Ireland', 'United Kingdom'];
 
   private unsubscribe$ = new Subject<void>();
+  // @TODO move this to a constant
+  private readonly charsRegex = /^[a-zA-Z]+$/;
 
   constructor(private formBuilder: FormBuilder) {}
 
@@ -38,11 +40,11 @@ export class FormRegisterComponent implements OnInit, OnDestroy {
       title: [this.titleOptions[0]],
       firstName: ['', Validators.compose([
         Validators.required,
-        Validators.pattern(/^[a-zA-Z]+$/)
+        Validators.pattern(this.charsRegex)
       ])],
       lastName: ['', Validators.compose([
         Validators.required,
-        Validators.pattern(/^[a-zA-Z]+$/)
+        Validators.pattern(this.charsRegex)
       ])],
       username: ['', validateUserName],
       movie: [''],
