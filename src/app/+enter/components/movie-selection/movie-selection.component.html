@@ -1,0 +1,6 @@
+<div class="movie-selection__item" 
+  *ngFor="let movie of movies; let index=index"
+  (click)="handleClick(movie)">
+  <span>{{movie.Title}}</span>
+  <img width="50" [src]="movie.Poster" [alt]="movie.Title">
+</div>

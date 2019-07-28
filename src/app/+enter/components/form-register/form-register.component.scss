@@ -1,0 +1,71 @@
+$dark-grey: #1d1d1b;
+$light-grey: #bdcbcf;
+$error-color: #b71d30;
+$fields-gap: 35px;
+$fields-width: 340px;
+$field-height: 44px;
+$green: #00bab1;
+
+.register {
+  font-size: 14px;
+  width: 340px;
+
+  &__group-label {
+    font-size: 16px;
+    color: $dark-grey;
+    border-bottom: 1px solid $light-grey;
+    width: $fields-width;
+    margin-bottom: 10px;
+  }
+
+  &__field-wrapper {
+    height: 100px;
+  }
+
+  &__label {
+    font-size: 14px;
+    display: inline-block;
+    font-weight: bold;
+    color: $dark-grey;
+    margin-bottom: 5px;
+    &--optional {
+      margin-left: 5px;
+      color: #869299;
+      font-style: italic;
+    }
+    &--error {
+      color: $error-color;
+      font-size: 12px;
+    }
+  }
+
+  &__field, &__select {
+    font-size: 14px;
+    border: 1px solid $light-grey;
+    height: $field-height;
+    width: 100%;
+    display: block;
+    &--error {
+      border: 1px $error-color solid;
+      border-left: 4px $error-color solid
+    }
+    &--disabled {
+      background: $light-grey;
+    }
+  }
+
+  &__select {
+    width: $fields-width/2;
+  }
+
+  &__button-submit {
+    font-size: 16px;
+    height: $field-height;
+    border-radius: 2px;
+    background: #00bab1;
+    color: white;
+    font-weight: bold;
+    width: 140px;
+    float: right;
+  }
+}

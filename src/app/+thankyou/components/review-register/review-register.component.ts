@@ -4,7 +4,7 @@ import { FormState } from '@state/reducers';
 @Component({
   selector: 'app-review-register',
   templateUrl: './review-register.component.html',
-  styleUrls: ['./review-register.component.css']
+  styleUrls: ['./review-register.component.scss']
 })
 export class ReviewRegisterComponent {
   @Input() public register: FormState;

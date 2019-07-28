@@ -10,10 +10,12 @@ import { AppComponent } from './app.component';
 import { reducers, metaReducers } from '@state/reducers';
 import { FormEffects, MovieEffects } from '@state/effects';
 import { environment } from '@root/environments/environment';
+import { InputControlComponent } from './components/input-control/input-control.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    InputControlComponent,
   ],
   imports: [
     BrowserModule,
