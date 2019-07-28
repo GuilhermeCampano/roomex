@@ -24,19 +24,27 @@
       formControlName="firstName">
     <ng-container *ngIf="hasControlError('firstName')">
       <label class="register__label--error">
-        First Name is required
+        First Name is invalid
       </label>
     </ng-container>
   </div>
 
   <div class="register__field-wrapper">
     <label class="register__label" for="lastName">Last name</label>
-    <input 
+    <input
       class="register__field"
-      [ngClass]="{'register__field--error': hasControlError('lastName')}"
+      [ngClass]="{
+        'register__field--error': hasControlError('lastName'),
+        'register__field--disabled': isLastNameDisabled
+      }"
       type="text"
       name="lastName"
       formControlName="lastName">
+    <ng-container *ngIf="hasControlError('lastName')">
+      <label class="register__label--error">
+        Last Name is invalid
+      </label>
+    </ng-container>
   </div>
 
   <div class="register__group-label">Account</div>
@@ -50,6 +58,11 @@
       type="text"
       name="username"
       formControlName="username">
+    <ng-container *ngIf="hasControlError('username')">
+      <label class="register__label--error">
+        Username is invalid
+      </label>
+    </ng-container>
   </div>
 
   <div class="register__group-label">About</div>
@@ -71,13 +84,19 @@
     <label class="register__label" for="country">Country</label>
     <select 
       class="register__select"
+      [ngClass]="{'register__select--error': hasControlError('country')}"
       name="country" 
       formControlName="country">
       <option value="">Choose your country</option>
-      <option *ngFor="let country  of countryOptions" [ngValue]="country">
+      <option *ngFor="let country of countryOptions" [ngValue]="country">
         {{ country }}
       </option>
     </select> 
+    <ng-container *ngIf="hasControlError('country')">
+      <label class="register__label--error">
+        Country is required
+      </label>
+    </ng-container>
   </div>
 
   <div class="register__field-wrapper">
@@ -88,6 +107,11 @@
       type="text"
       name="postCode"
       formControlName="postCode">
+    <ng-container *ngIf="hasControlError('postCode')">
+      <label class="register__label--error">
+        Post Code is invalid
+      </label>
+    </ng-container>
   </div>
   
   <button 

@@ -49,6 +49,9 @@ $green: #00bab1;
       border: 1px $error-color solid;
       border-left: 4px $error-color solid
     }
+    &--disabled {
+      background: $light-grey;
+    }
   }
 
   &__select {
