@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
-import { ThankyouRoutingModule } from './thankyou-routing.module';
 import { ThankYouContainerComponent } from './components';
 import { ReviewRegisterComponent } from './components/review-register/review-register.component';
+import { ThankyouRoutingModule } from './thankyou-routing.module';
 
 @NgModule({
   declarations: [ThankYouContainerComponent, ReviewRegisterComponent],

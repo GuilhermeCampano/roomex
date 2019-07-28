@@ -1,15 +1,15 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { EffectsModule } from '@ngrx/effects';
-import { HttpClientModule } from '@angular/common/http';
 
+import { environment } from '@root/environments/environment';
+import { FormEffects, MovieEffects } from '@state/effects';
+import { metaReducers, reducers } from '@state/reducers';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { reducers, metaReducers } from '@state/reducers';
-import { FormEffects, MovieEffects } from '@state/effects';
-import { environment } from '@root/environments/environment';
 
 @NgModule({
   declarations: [AppComponent],

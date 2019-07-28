@@ -1,22 +1,16 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { of } from 'rxjs';
 import {
-  tap,
-  switchMap,
-  map,
   catchError,
+  debounceTime,
   exhaustMap,
-  throttle,
-  throttleTime,
-  debounceTime
-} from 'rxjs/operators';
-import { Observable, of } from 'rxjs';
+  map} from 'rxjs/operators';
 
-import { MoviesActionTypes, fetchMoviesSuccessAction, fetchMoviesFailedAction } from '../actions';
-import { HttpClient } from '@angular/common/http';
 import { MovieApiResponse } from '@root/app/models';
 import { environment } from '@root/environments/environment';
-import { Action } from '@ngrx/store';
+import { fetchMoviesFailedAction, fetchMoviesSuccessAction, MoviesActionTypes } from '../actions';
 
 @Injectable()
 export class MovieEffects {

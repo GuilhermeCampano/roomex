@@ -1,7 +1,7 @@
-import { createAction, props } from '@ngrx/store';
 import { HttpErrorResponse } from '@angular/common/http';
+import { createAction, props } from '@ngrx/store';
 
-import { MovieApiResponse, Movie } from '@app/models';
+import { Movie } from '@app/models';
 
 export enum MoviesActionTypes {
   FETCH_MOVIES = '[Movies] Fetch movies',

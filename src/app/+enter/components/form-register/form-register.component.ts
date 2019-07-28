@@ -1,14 +1,14 @@
-import { Component, OnInit, Output, EventEmitter, OnDestroy, Input } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
-import { takeUntil, distinctUntilChanged } from 'rxjs/operators';
+import { distinctUntilChanged, takeUntil } from 'rxjs/operators';
 
-import { RegisterForm, Movie } from '@app/models';
+import { Movie, RegisterForm } from '@app/models';
 import {
+  validateIrelandPostCode,
   validateNotNull,
-  validateUsername,
   validateUKPostCode,
-  validateIrelandPostCode
+  validateUsername
 } from '@app/utils';
 
 @Component({

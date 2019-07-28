@@ -1,4 +1,4 @@
-import { AbstractControl, ValidationErrors, Validators } from '@angular/forms';
+import { AbstractControl, ValidationErrors } from '@angular/forms';
 
 export const validateNotNull = (control: AbstractControl): ValidationErrors => {
   if (!control.value || !control.value.length) {

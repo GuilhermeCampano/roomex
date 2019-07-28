@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 import { FormActionTypes } from '../actions';
-import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 
 @Injectable()
 export class FormEffects {

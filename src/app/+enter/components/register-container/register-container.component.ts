@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Subscription, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 
 import { Movie, RegisterForm } from '@app/models';
+import { fetchMoviesAction, sendValidFormAction } from '@state/actions';
 import { AppState } from '@state/reducers';
-import { sendValidFormAction, fetchMoviesAction } from '@state/actions';
 import { getMovies } from '@state/selectors';
 
 @Component({

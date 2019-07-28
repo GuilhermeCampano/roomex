@@ -72,7 +72,11 @@
       {
         "import-sources-order": "case-insensitive",
         "named-imports-order": "case-insensitive",
-        "grouped-imports": false
+        "grouped-imports": true,
+        "groups": [
+          "(^@angular|^@ngrx|^rxjs)",
+          "(^@root|^@app|^@state|^./|^../)"
+        ]
       }
     ],
     "quotemark": [
