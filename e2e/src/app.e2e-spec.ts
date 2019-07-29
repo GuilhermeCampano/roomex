@@ -9,9 +9,9 @@ describe('workspace-project App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('should display logo', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('Welcome to roomex!');
+    expect(page.getLogo()).toBeDefined();
   });
 
   afterEach(async () => {
